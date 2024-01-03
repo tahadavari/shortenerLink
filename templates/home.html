@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Link Shortener</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #validationMessage {
+            color: red;
+            font-size: 14px;
+            display: block;
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Shorten Your Link</h1>
+    <form id="shorten-form" method="post" class="form-control">
+        {% csrf_token %}
+        <label for="original_link"></label><input name="original_link" type="text" id="original_link" placeholder="Enter your link...">
+        <button type="submit">Shorten</button>
+    </form>
+    <span id="validationMessage"></span>
+</div>
+<script>
+    function validateLink() {
+        let originalLink = document.getElementById('originalLink').value;
+        let pattern = /^(ftp|http|https):\/\/[^ "]+$/;
+
+        if (pattern.test(originalLink)) {
+            document.getElementById('validationMessage').innerText = '';
+            // Here you can submit the form or perform further actions
+        } else {
+            document.getElementById('validationMessage').innerText = 'Please enter a valid link.';
+        }
+    }
+</script>
+</body>
+</html>
