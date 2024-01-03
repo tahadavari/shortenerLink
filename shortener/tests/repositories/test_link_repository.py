@@ -1,6 +1,6 @@
 from django.core.files.base import ContentFile
 from django.test import TestCase
-from unittest.mock import patch, Mock
+from unittest.mock import patch
 
 from shortener.models.link import Link
 from shortener.repositories.link_repository import LinkRepository

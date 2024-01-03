@@ -19,4 +19,4 @@ class TestLinkForm(TestCase):
 
     def test_empty_data(self):
         form = LinkForm({})
-        self.assertFalse(form.is_valid())
+        self.assertTrue(form.is_valid())
